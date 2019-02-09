@@ -1,5 +1,5 @@
 var db = require("../models");
-
+var foodWeb = require("foodweb");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -11,8 +11,14 @@ module.exports = function(app) {
     });
   });
   console.log("2, html routes");
+
+
+
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  app.get("/examples/:ingredient", function(req, res) {
+    console.log("ingredient", req.params.ingredient);
+    var searchIngredient = foodWeb.search(req.params.ingredient, 5);
+    console.log(searchIngredient);
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
       res.render("example", {
         example: dbExample

@@ -8,7 +8,14 @@ var $ingredientList = $("#ingredient-list");
 // var term = $ingredientText; // the search term
 // var maxLength = 5; // the maximum number of items to return
 
-
+var foodAPI = {
+  searchIngredient: function(example) {
+    return $.ajax({
+      url: "/examples/" + example,
+      type: "GET"
+    });
+  }
+};
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveIngredient: function(example) {
@@ -41,7 +48,7 @@ var refreshExamples = function() {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
         .text(example.text, example.ammount)
-        .attr("href", "/example/" + example.id);
+        .attr("href", "/example/" + example.text);
 
       var $li = $("<li>")
         .attr({
@@ -68,7 +75,8 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-
+  var ingredientVar = $("#ingredient-text").val();
+  foodAPI.searchIngredient(ingredientVar);
   var example = {
     text: $ingredientText.val().trim(),
     ammount: $ingredientAmmount.val().trim()
@@ -78,6 +86,10 @@ var handleFormSubmit = function(event) {
     alert("You must enter an example text and ammount!");
     return;
   }
+
+  // API.getIngredients(example).then(function() {
+
+  // })
   // console.log(foodWeb.search(term, maxLength));
   API.saveIngredient(example).then(function() {
     refreshExamples();

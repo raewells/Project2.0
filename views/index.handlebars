@@ -21,7 +21,15 @@
         </form>
       </div>
       <div class="col-6">
-
+        <h4>Searches:</h4>
+        <ul id="search-list" class="list-group">
+          {{#each searches}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="ingredientSearch/{{this.text}}">{{this.text}} || Amount: {{this.description}} grams</a>
+            <button class="btn btn-danger float-right delete" id="searchDelete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
       </div>
     </div>
     <br>

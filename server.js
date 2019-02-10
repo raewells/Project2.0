@@ -6,7 +6,7 @@ var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
-var foodWeb = require("foodweb");
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -44,7 +44,4 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
-module.exports = {
-  app,
-  foodWeb
-};
+module.exports = app;

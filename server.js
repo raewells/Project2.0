@@ -2,6 +2,10 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 
+// messing w ejs leave here
+// var ejs = require("ejs");
+// app.set("view engine", "ejs");
+
 var db = require("./models");
 
 var app = express();

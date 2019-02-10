@@ -1,5 +1,5 @@
 {
-  "name": "Project2.0",
+  "name": "project2.0",
   "version": "1.0.0",
   "description": "Project 2 Starter",
   "main": "server.js",
@@ -12,16 +12,27 @@
   },
   "license": "ISC",
   "dependencies": {
-    "browserify": "^16.2.3",
+    "auth": "0.0.9",
     "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
+    "browserify": "^16.2.3",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "foodweb": "^1.0.0",
+    "install": "^0.12.2",
     "mysql2": "^1.6.4",
     "nodemon": "^1.18.9",
-    "sequelize": "^4.41.2"
+    "npm": "^6.7.0",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth20": "^1.0.0",
+    "sequelize": "^4.42.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -32,5 +43,17 @@
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachelsue/Project2.0.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/rachelsue/Project2.0/issues"
+  },
+  "homepage": "https://github.com/rachelsue/Project2.0#readme"
 }

@@ -67,4 +67,5 @@ FOREIGN KEY
     SELECT username, meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals
     FROM users, meals
     WHERE meals.created_by_user = users.username
+    GROUP BY username
     ORDER BY meal_id;

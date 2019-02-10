@@ -4,6 +4,7 @@
   "description": "Project 2 Starter",
   "main": "server.js",
   "scripts": {
+    "build": "browserify",
     "start": "node server.js",
     "lint": "eslint **/*.js --quiet",
     "fix": "eslint --fix .",
@@ -11,6 +12,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "browserify": "^16.2.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "ejs": "^2.6.1",
@@ -18,6 +20,7 @@
     "express-handlebars": "^3.0.0",
     "foodweb": "^1.0.0",
     "mysql2": "^1.6.4",
+    "nodemon": "^1.18.9",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {

@@ -19,24 +19,44 @@ meal_name VARCHAR
     (100) NOT NULL,
 ingredient_1 VARCHAR
     (50),
+ammount_1 INTEGER
+    (11),
 ingredient_2 VARCHAR
     (50),
+ammount_2 INTEGER
+    (11),
 ingredient_3 VARCHAR
     (50),
+ammount_3 INTEGER
+    (11),
 ingredient_4 VARCHAR
     (50),
+ammount_4 INTEGER
+    (11),
 ingredient_5 VARCHAR
     (50),
+ammount_5 INTEGER
+    (11),
 ingredient_6 VARCHAR
     (50),
+ammount_6 INTEGER
+    (11),
 ingredient_7 VARCHAR
     (50),
+ammount_7 INTEGER
+    (11),
 ingredient_8 VARCHAR
     (50),
+ammount_8 INTEGER
+    (11),
 ingredient_9 VARCHAR
     (50),
+ammount_9 INTEGER
+    (11),
 ingredient_10 VARCHAR
     (50),
+ammount_10 INTEGER
+    (11),
 total_cals FLOAT
     (8,0),
 created_by_user VARCHAR
@@ -47,6 +67,13 @@ FOREIGN KEY
     (created_by_user) REFERENCES users
     (username)
 );
+
+CREATE TABLE searches
+(
+    
+)
+
+
 
     INSERT INTO users
         (first_name, last_name, username, email)

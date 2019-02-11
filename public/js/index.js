@@ -10,9 +10,9 @@ var $searchList = $("#search-list");
 // var maxLength = 5; // the maximum number of items to return
 
 var foodAPI = {
-  searchIngredient: function (example) {
+  searchIngredient: function (ingredient) {
     return $.ajax({
-      url: "/ingredientSearch/" + example,
+      url: "/api/Searches/" + ingredient,
       type: "GET"
     });
   },
@@ -21,7 +21,7 @@ var foodAPI = {
       headers: {
         "Content-Type": "application/json"
       },
-      url: "/ingredientSearch/",
+      url: "/api/Searches/",
       type: "POST",
       data: JSON.stringify(example)
     });
@@ -35,19 +35,19 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/Meals",
       data: JSON.stringify(example)
     });
   },
   getIngredients: function () {
     return $.ajax({
-      url: "api/examples",
+      url: "api/Meals",
       type: "GET"
     });
   },
-  deleteIngredient: function (id) {
+  deleteIngredient: function (ingredient) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/Meals/" + id,
       type: "DELETE"
     });
   }

@@ -1,4 +1,4 @@
-var router  = require("express").Router();
+var router = require("express").Router();
 // var db = require("../models");
 var passport = require("passport");
 // var path = require("path");
@@ -19,17 +19,9 @@ router.get("/login", authCheck, function(req, res) {
   res.render("index");
 });
 
-router.get("/", function(req, res) {
-  res.render("index", { user: req.user });
-});
-
-router.get("/findgame", authCheck, function(req, res) {
-  res.render("findGame", { user: req.user });
-});
-
-router.get("/creategame", authCheck, function(req, res) {
-  res.render("create", { user: req.user });
-});
+// router.get("/", function(req, res) {
+//   res.render("index", { user: req.user });
+// });
 
 // auth logout
 router.get("/logout", function(req, res) {

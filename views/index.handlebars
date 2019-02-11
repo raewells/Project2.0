@@ -37,7 +37,7 @@
       <div class="col-6 offset-3">
         <h4>Ingredients:</h4>
         <ul id="ingredient-list" class="list-group">
-          {{#each examples}}
+          {{#each searches}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="example/{{this.id}}">{{this.text}} || Amount: {{this.description}} grams</a>
             <button class="btn btn-danger float-right delete">ｘ</button>

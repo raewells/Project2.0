@@ -57,9 +57,9 @@ module.exports = function (app) {
     });
   });
 
-    app.delete("/api/Meals/:ingredient", function (req, res) {
-      db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
-        res.json(dbMeals);
-      });
+  app.delete("/api/Meals/:ingredient", function (req, res) {
+    db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
+      res.json(dbMeals);
     });
-  };
+  });
+};

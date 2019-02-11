@@ -8,7 +8,6 @@ CREATE TABLE users
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT NOW(),
     PRIMARY KEY (username)
 );
 
@@ -40,8 +39,6 @@ ingredient_10 VARCHAR
     (50),
 total_cals FLOAT
     (8,0),
-created_at TIMESTAMP DEFAULT NOW
-    (),
 created_by_user VARCHAR
     (20),
 PRIMARY KEY
@@ -52,17 +49,17 @@ FOREIGN KEY
 );
 
     INSERT INTO users
-        (first_name, last_name, username, email, created_at)
+        (first_name, last_name, username, email)
     VALUES
-        ("Kenton", "Kirlin", 'Kenton_Kirlin', 'yaboyKK@gmail.com', '2017-02-16 18:22:10.846'),
-        ("Cardi", "B", 'trashcitygirl', 'bloodyshoes@gmail.com', '2016-09-11 18:51:56.965');
+        ("Kenton", "Kirlin", 'Kenton_Kirlin', 'yaboyKK@gmail.com'),
+        ("Cardi", "B", 'trashcitygirl', 'bloodyshoes@gmail.com');
 
     INSERT INTO meals
-        (meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals, created_at, created_by_user)
+        (meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals, created_by_user)
     VALUES
-        ("Grilled Cheese", "Bread", "Cheese", "Hot Sauce", 1000, '2017-02-16 18:22:10.846', 'Kenton_Kirlin'),
-        ("Diet", "Celery", "Water", "Lettuce", 23.54, '2016-09-11 18:51:56.965', 'trashcitygirl');
-        ("Dessert","Chocolate", "Ice Cream", "Strawberries", 800.54, '2016-09-11 18:51:56.965', 'trashcitygirl');
+        ("Grilled Cheese", "Bread", "Cheese", "Hot Sauce", 1000, 'Kenton_Kirlin'),
+        ("Diet", "Celery", "Water", "Lettuce", 23.54, 'trashcitygirl');
+    ("Dessert","Chocolate", "Ice Cream", "Strawberries", 800.54, 'trashcitygirl');
 
     SELECT username, meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals
     FROM users, meals

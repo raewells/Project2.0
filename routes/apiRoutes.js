@@ -1,4 +1,5 @@
 var db = require("../models");
+var foodWeb = require("foodweb");
 
 module.exports = function(app) {
   // Get all examples
@@ -21,6 +22,16 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+
+  app.get("/api/meals", function(req, res) {
+    db.Meals.findAll({}).then(function(dbMeals) {
+      res.json(dbMeals);
+    });
+  });
+
+
+
 };
 
 

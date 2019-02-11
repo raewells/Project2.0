@@ -1,5 +1,6 @@
 var db = require("../models");
 var foodWeb = require("foodweb");
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -11,6 +12,20 @@ module.exports = function(app) {
     });
   });
   console.log("2, html routes");
+
+  //load all meals
+  // app.get("/meals", function(req, results) {
+  //   db.Meals.findAll({
+  //     meals: req.body.meal_name
+  //   }).then(function(dbMeals) {
+  //     let temp = JSON.stringify(results);
+  //     let temp2 = JSON.parse(temp);
+  //     console.log(temp);
+  //     res.render("index", {
+  //       meals: temp2
+  //     });
+  //   });
+  // });
 
   //post request here to save ingredient to second table
 

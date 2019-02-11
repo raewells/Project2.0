@@ -50,9 +50,6 @@ module.exports = function(sequelize, DataTypes) {
     total_cals: {
       type: DataTypes.FLOAT
     },
-    created_at: {
-      type: DataTypes.DATE
-    },
     created_by_user: {
       type: DataTypes.STRING,
       references: {

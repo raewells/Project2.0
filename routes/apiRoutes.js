@@ -51,15 +51,19 @@ module.exports = function (app) {
 
   app.post("/api/Meals/:ingredient", function (req, res) {
     db.Meals.create(req.body).then(function (dbMeals) {
-    db.Meals.create(req.body).then(function (dbMeals) {
-      res.json(dbMeals);
+      db.Meals.create(req.body).then(function (dbMeals) {
+        res.json(dbMeals);
+      });
     });
   });
 
-  app.delete("/api/Meals/:ingredient", function (req, res) {
-    db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
-      res.json(dbMeals);
+    app.delete("/api/Meals/:ingredient", function (req, res) {
+      db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
+        res.json(dbMeals);
+      });
     });
+
+  };
   })
 
   // app.get("/api/Meals/", function(req, res) {

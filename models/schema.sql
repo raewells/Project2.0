@@ -70,8 +70,20 @@ FOREIGN KEY
 
 CREATE TABLE searches
 (
-    
-)
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    search_1 INTEGER (11),
+    search_1_ammount INTEGER (11),
+    search_2 INTEGER (11),
+    search_2_ammount INTEGER (11),
+    search_3 INTEGER (11),
+    search_3_ammount INTEGER (11),
+    search_4 INTEGER (11),
+    search_4_ammount INTEGER (11),
+    search_5 INTEGER (11),
+    search_5_ammount INTEGER (11),
+    PRIMARY KEY (id)
+
+);
 
 
 
@@ -85,7 +97,7 @@ CREATE TABLE searches
         (meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals, created_by_user)
     VALUES
         ("Grilled Cheese", "Bread", "Cheese", "Hot Sauce", 1000, 'Kenton_Kirlin'),
-        ("Diet", "Celery", "Water", "Lettuce", 23.54, 'trashcitygirl');
+        ("Diet", "Celery", "Water", "Lettuce", 23.54, 'trashcitygirl'),
     ("Dessert","Chocolate", "Ice Cream", "Strawberries", 800.54, 'trashcitygirl');
 
     SELECT username, meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals

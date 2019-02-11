@@ -20,32 +20,62 @@ module.exports = function(sequelize, DataTypes) {
     ingredient_1: {
       type: DataTypes.STRING
     },
+    ammount_1: {
+      type: DataTypes.INTEGER
+    },
     ingredient_2: {
       type: DataTypes.STRING
+    },
+    ammount_2: {
+      type: DataTypes.INTEGER
     },
     ingredient_3: {
       type: DataTypes.STRING
     },
+    ammount_3: {
+      type: DataTypes.INTEGER
+    },
     ingredient_4: {
       type: DataTypes.STRING
+    },
+    ammount_4: {
+      type: DataTypes.INTEGER
     },
     ingredient_5: {
       type: DataTypes.STRING
     },
+    ammount_5: {
+      type: DataTypes.INTEGER
+    },
     ingredient_6: {
       type: DataTypes.STRING
+    },
+    ammount_6: {
+      type: DataTypes.INTEGER
     },
     ingredient_7: {
       type: DataTypes.STRING
     },
+    ammount_7: {
+      type: DataTypes.INTEGER
+    },
     ingredient_8: {
       type: DataTypes.STRING
+    },
+    ammount_8: {
+      type: DataTypes.INTEGER
     },
     ingredient_9: {
       type: DataTypes.STRING
     },
+    ammount_9: {
+      type: DataTypes.INTEGER
+    },
     ingredient_10: {
       type: DataTypes.STRING
+    },
+    ammount_10: {
+      type: DataTypes.INTEGER
     },
     total_cals: {
       type: DataTypes.FLOAT

@@ -1,13 +1,13 @@
 var db = require("../models");
 var foodWeb = require("foodweb");
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Meals.findAll({}).then(function(dbMeals) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+        Meals: dbMeals
       });
     });
   });
@@ -32,14 +32,18 @@ module.exports = function(app) {
   //   });
   // });
 
+
   //post request here to save ingredient to second table
 
-  app.post("/ingredientSearch/", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      console.log("ingredient post", req.body);
-      res.json(dbExample);
-    });
-  });
+  // app.get("/Meals", function(req, res) {
+
+  //   db.Meals.findAll({}).then(function(dbMeals) {
+  //     // console.log("ingredient post", req.body);
+  //     res.render("Meals", {
+
+  //     })
+  //   });
+  // });
 
   // Load example page and pass in an example by id
   app.get("/ingredientSearch/:ingredient", function(req, res) {
@@ -62,3 +66,19 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
+
+
+//load all meals
+  // app.get("/meals", function(req, results) {
+  //   db.Meals.findAll({
+  //     meals: req.body.meal_name
+  //   }).then(function(dbMeals) {
+  //     let temp = JSON.stringify(results);
+  //     let temp2 = JSON.parse(temp);
+  //     console.log(temp);
+  //     res.render("index", {
+  //       meals: temp2
+  //     });
+  //   });
+  // });

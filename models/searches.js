@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     var Searches = sequelize.define('Searches', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true
+        },        
         search_1: {
             type: DataTypes.STRING
         },

@@ -13,6 +13,11 @@ module.exports = function(app) {
   });
   console.log("2, html routes");
 
+  //Just for testing login
+  app.get("/login", function(req, res) {
+    res.render("login.ejs");
+  });
+
   //load all meals
   // app.get("/meals", function(req, results) {
   //   db.Meals.findAll({

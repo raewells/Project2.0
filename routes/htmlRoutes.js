@@ -13,6 +13,26 @@ module.exports = function(app) {
   });
   console.log("2, html routes");
 
+  //Just for testing login
+  app.get("/login", function(req, res) {
+    res.render("login.ejs");
+  });
+
+  //load all meals
+  // app.get("/meals", function(req, results) {
+  //   db.Meals.findAll({
+  //     meals: req.body.meal_name
+  //   }).then(function(dbMeals) {
+  //     let temp = JSON.stringify(results);
+  //     let temp2 = JSON.parse(temp);
+  //     console.log(temp);
+  //     res.render("index", {
+  //       meals: temp2
+  //     });
+  //   });
+  // });
+
+
   //post request here to save ingredient to second table
 
   // app.get("/Meals", function(req, res) {

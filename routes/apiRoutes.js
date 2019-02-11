@@ -61,5 +61,31 @@ module.exports = function (app) {
     db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
       res.json(dbMeals);
     });
+
+  };
+  })
+
+  // app.get("/api/Meals/", function(req, res) {
+  //   db.Meals
+  // })
+
+
+};
+
+
+  // Delete an example by id
+  app.delete("/api/examples/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
+      res.json(dbExample);
+    });
+  });
+
+  //testing create user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 };

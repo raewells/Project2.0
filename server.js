@@ -4,38 +4,27 @@ var exphbs = require("express-handlebars");
 var authRoutes = require("./routes/authRoutes");
 // eslint-disable-next-line no-unused-vars
 var passportSetup = require("./config/passport-setup");
-
+var ejs = require("ejs");
 var cookieSession = require("cookie-session");
 var passport = require("passport");
 
 var app = express();
-
-
-
-// messing w ejs leave here
-// var ejs = require("ejs");
-// app.set("view engine", "ejs");
+app.set("view engine", "ejs");
 
 var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
 
-
-
-
-
-
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ["hey"],
+    keys: ["hey"]
   })
 );
 
 //initialize passport
 app.use(passport.initialize());
-app.use(passport.session({resave: false}));
-
+app.use(passport.session({ resave: false }));
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -55,7 +44,6 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-
 
 var syncOptions = { force: false };
 

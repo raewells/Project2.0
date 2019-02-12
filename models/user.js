@@ -10,14 +10,36 @@ module.exports = (sequelize, DataTypes) => {
     last_name: {
       type: DataTypes.STRING
     },
-    email: {
+    googleId: {
       type: DataTypes.STRING
-    }
+    }, 
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE
+  },
+  updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE
+  }
   });
-  Users.associate = function(models) {
-    Users.hasMany(models.Meals, {
-      onDelete: "cascade"
-    });
-  };
-  return Users;
+Users.associate = function(models) {
+  Users.hasMany(models.Meals, {
+    onDelete: "cascade"
+  });
 };
+return Users;
+};
+
+// module.exports = function(sequelize, DataTypes) {
+//   var Users = sequelize.define("Users", {
+//     firstName: DataTypes.STRING,
+//     lastName: DataTypes.STRING,
+//     googleID: DataTypes.STRING
+//   });
+//   Users.associate = function(models) {
+//     Users.hasMany(models.Meals, {
+//       onDelete: "cascade"
+//     });
+//   };
+//   return Users;
+// };

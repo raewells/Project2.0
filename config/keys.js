@@ -5,3 +5,6 @@ module.exports = {
     clientSecret: "xgL6WJ9jLjCkAWi6xZJefN3O"
   }
 };
+
+// dont fucking touch this i will kill you
+// SET sql_mode = 'STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';

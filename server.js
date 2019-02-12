@@ -2,25 +2,27 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var authRoutes = require("./routes/authRoutes");
-// eslint-disable-next-line no-unused-vars
+var profileRoutes = require("./routes/profileRoutes");
 var passportSetup = require("./config/passport-setup");
 var ejs = require("ejs");
 var cookieSession = require("cookie-session");
 var passport = require("passport");
+var keys = require("./config/keys");
+
 
 var app = express();
 app.set("view engine", "ejs");
 
-var db = require("./models");
-
-var PORT = process.env.PORT || 3000;
-
 app.use(
   cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
-    keys: ["hey"]
+    keys: [keys.session.cookieKey]
   })
 );
+
+var db = require("./models");
+
+var PORT = process.env.PORT || 3000;
 
 //initialize passport
 app.use(passport.initialize());
@@ -31,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use("/auth", authRoutes);
+app.use("/profile", profileRoutes);
 
 // Handlebars
 app.engine(

@@ -23,7 +23,7 @@ module.exports = function(app) {
         res.json(dbSearches);
       });
     };
-    console.log()
+ 
 
   });
 
@@ -53,29 +53,5 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/api/MealSum", function (req, res) {
-  //   db.Meals.findAll({}).then(function(dbMeals) {
-  //     var totalCals;
-  //     for (var i = 0; i < )
-  //   })
-  // })
-  // app.get("/api/Meals/", function(req, res) {
-  //   db.Meals
-  // })
-
-  // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
-  //     dbExample
-  //   ) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
-  //testing create user
-  // app.post("/api/user", function(req, res) {
-  //   db.User.create(req.body).then(function(dbUser) {
-  //     res.json(dbUser);
-  //   });
-  // });
+  
 };

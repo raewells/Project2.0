@@ -7,14 +7,15 @@ CREATE TABLE users
     username VARCHAR(20) NOT NULL,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    googleId VARCHAR(100) NOT NULL,
+    created_at DATE,
+    updated_at DATE,
     PRIMARY KEY (username)
 );
 
 CREATE TABLE meals
 (
-    meal_id INT
-    AUTO_INCREMENT NOT NULL,
+    meal_id INT AUTO_INCREMENT NOT NULL,
 meal_name VARCHAR
     (100) NOT NULL,
 ingredient_1 VARCHAR
@@ -91,8 +92,6 @@ FOREIGN KEY
     PRIMARY KEY
         (id)
 );
-
-
 
         INSERT INTO users
             (first_name, last_name, username, email)

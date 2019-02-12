@@ -1,7 +1,7 @@
 var db = require("../models");
 var foodWeb = require("foodweb");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all examples
   // app.get("/api/examples", function (req, res) {
   //   db.Example.findAll({}).then(function (dbExamples) {
@@ -48,14 +48,14 @@ module.exports = function (app) {
 
   });
 
-  app.delete("/api/Searches", function (req, res) {
-    db.Searches.destroy({}).then(function (dbSearches) {
+  app.delete("/api/Searches", function(req, res) {
+    db.Searches.destroy({}).then(function(dbSearches) {
       res.json(dbSearches);
     });
   });
 
-  app.get("/api/Meals", function (req, res) {
-    db.Meals.findAll({}).then(function (dbMeals) {
+  app.get("/api/Meals", function(req, res) {
+    db.Meals.findAll({}).then(function(dbMeals) {
       res.json(dbMeals);
     });
   });
@@ -80,14 +80,6 @@ module.exports = function (app) {
   //   db.Meals
   // })
 
-  app.post("/api/user", function (req, res) {
-    db.User.create(req.body).then(function (dbUser) {
-      res.json(dbUser);
-    });
-  });
-};
-
-
   // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
   //   db.Example.destroy({ where: { id: req.params.id } }).then(function(
@@ -98,3 +90,9 @@ module.exports = function (app) {
   // });
 
   //testing create user
+  app.post("/api/user", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+};

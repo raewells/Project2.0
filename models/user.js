@@ -10,14 +10,22 @@ module.exports = (sequelize, DataTypes) => {
     last_name: {
       type: DataTypes.STRING
     },
-    email: {
+    googleId: {
       type: DataTypes.STRING
-    }
+    }, 
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE
+  },
+  updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE
+  }
   });
-  Users.associate = function(models) {
-    Users.hasMany(models.Meals, {
-      onDelete: "cascade"
-    });
-  };
-  return Users;
+Users.associate = function(models) {
+  Users.hasMany(models.Meals, {
+    onDelete: "cascade"
+  });
+};
+return Users;
 };

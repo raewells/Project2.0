@@ -22,9 +22,6 @@ module.exports = function(app) {
       }).then(function (dbSearches) {
         res.json(dbSearches);
       });
-      setTimeout(() => {
-        console.log("timeout", i)
-      }, 100);
     };
     console.log()
 

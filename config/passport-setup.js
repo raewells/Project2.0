@@ -3,6 +3,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
 const db = require("../models");
+const Users = require("../models/user");
 
 passport.serializeUser(function(users, done) {
   done(null, users.username);
@@ -23,6 +24,7 @@ passport.use(
     },
     function(accessToken, refreshToken, profile, done) {
       //check if User already exists in our database
+      console.log(profile);
       db.Users.findOne({ where: { googleID: profile.id } }).then(function(
         currentUser
       ) {

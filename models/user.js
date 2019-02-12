@@ -29,17 +29,3 @@ Users.associate = function(models) {
 };
 return Users;
 };
-
-// module.exports = function(sequelize, DataTypes) {
-//   var Users = sequelize.define("Users", {
-//     firstName: DataTypes.STRING,
-//     lastName: DataTypes.STRING,
-//     googleID: DataTypes.STRING
-//   });
-//   Users.associate = function(models) {
-//     Users.hasMany(models.Meals, {
-//       onDelete: "cascade"
-//     });
-//   };
-//   return Users;
-// };

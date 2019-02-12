@@ -31,42 +31,17 @@ passport.use(
           console.log("user is ", currentUser);
           done(null, currentUser);
         } else {
-      db.Users.create({
-        username: profile.displayName,
-        first_name: profile.name.givenName,
-        last_name: profile.name.familyName,
-        googleId: profile.id
-      })
-        .then(function(newUsers) {
-          console.log(newUsers);
-          done(null, newUsers);
-        });
-      }
-    });
-  }
-)
+          db.Users.create({
+            username: profile.displayName,
+            first_name: profile.name.givenName,
+            last_name: profile.name.familyName,
+            googleId: profile.id
+          }).then(function(newUsers) {
+            console.log(newUsers);
+            done(null, newUsers);
+          });
+        }
+      });
+    }
+  )
 );
-//     function(accessToken, refreshToken, profile, done) {
-//       //check if User already exists in our database
-//       db.User.findOne({ where: { googleID: profile.id } }).then(function(
-//         currentUser
-//       ) {
-//         if (currentUser) {
-//           //already have user
-//           console.log("user is ", currentUser);
-//           done(null, currentUser);
-//         } else {
-//           //if not, create new user in db
-//           db.User.create({
-//             firstName: profile.name.givenName,
-//             lastName: profile.name.familyName,
-//             googleID: profile.id
-//           }).then(function(newUser) {
-//             console.log(newUser);
-//             done(null, newUser);
-//           });
-//         }
-//       });
-//     }
-//   )
-// );

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>Food Diary!</h1>
-        <h3>Track nutritional contents of any meal, just add ingredients and ammounts below: </h3>
+        <h3>Track nutritional contents of any meal, just add ingredients and amounts below: </h3>
       </div>
     </div>
     <div class="row">
@@ -14,8 +14,8 @@
             <input type="text" id="ingredient-text" class="form-control" aria-describedby="ingredient-text" placeholder="Ingredient...">
           </div>
           <div class="form-group">
-            <label for="ingredient-ammount">Ingredient ammount (grams): </label>
-            <textarea class="form-control" id="ingredient-ammount" aria-describedby="ingredient-ammount" placeholder="Ammount in grams..."></textarea>
+            <label for="ingredient-amount">Ingredient amount (grams): </label>
+            <textarea class="form-control" id="ingredient-amount" aria-describedby="ingredient-amount" placeholder="amount in grams..."></textarea>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -25,7 +25,7 @@
         <ul id="search-list" class="list-group">
           {{#each searches}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="ingredientSearch/{{this.text}}">{{this.text}} || Amount: {{this.description}} grams</a>
+            <a href="ingredientSearch/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete" id="searchDelete">ｘ</button>
           </li>
           {{/each}}
@@ -37,9 +37,9 @@
       <div class="col-6 offset-3">
         <h4>Ingredients:</h4>
         <ul id="ingredient-list" class="list-group">
-          {{#each searches}}
+          {{#each meals}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}} || Amount: {{this.description}} grams</a>
+            <a href="example/{{this.id}}">{{this.text}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -53,3 +53,6 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+
+
+{{!-- action="/api/Searches" --}}

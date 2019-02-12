@@ -4,35 +4,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             primaryKey: true
         },        
-        search_1: {
+        search: {
             type: DataTypes.STRING
         },
-        search_1_ammount: {
+        amount: {
             type: DataTypes.INTEGER
         },
-        search_2: {
-            type: DataTypes.STRING
+        createdAt: {
+            field: 'created_at',
+            type: DataTypes.DATE
         },
-        search_2_ammount: {
-            type: DataTypes.INTEGER
-        },
-        search_3: {
-            type: DataTypes.STRING
-        },
-        search_3_ammount: {
-            type: DataTypes.INTEGER
-        },
-        search_4: {
-            type: DataTypes.STRING
-        },
-        search_4_ammount: {
-            type: DataTypes.INTEGER
-        },
-        search_5: {
-            type: DataTypes.STRING
-        },
-        search_5_ammount: {
-            type: DataTypes.INTEGER
+        updatedAt: {
+            field: 'updated_at',
+            type: DataTypes.DATE
         }
     });
     return Searches;

@@ -14,9 +14,16 @@ module.exports = function(app) {
   console.log("2, html routes");
 
   //Just for testing login
-  app.get("/login", function(req, res) {
+  app.get("/auth/google/callback", function(req, res) {
     res.render("login.ejs");
   });
+  //futher google login, rachel will look over this
+
+  // app.get("/auth/google", function(req, res) {
+  //   res.render("");
+  // })
+
+  //^^^futher google login, rachel will look over this^^^
 
   //load all meals
   // app.get("/meals", function(req, results) {

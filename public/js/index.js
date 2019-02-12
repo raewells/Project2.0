@@ -17,7 +17,7 @@ var foodAPI = {
     });
   },
   postIngredient: function (ingredient) {
-    console.log("post ingredient", ingredient.text)
+    console.log("post ingredient", ingredient.search)
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -82,6 +82,25 @@ var refreshExamples = function () {
     $ingredientList.append($examples);
   });
 };
+var refreshSearches = function () {
+  foodAPI.searchIngredient().then(function(data) {
+    var $searchingIngredient = data.map(function (searches) {
+      var $a = $("<a>").text(searches.search).attr("href", "/getSearches/", searches.search);
+
+      var $li = $("<li>").attr({
+        class: "list-group-item",
+        "data-id": searches.id
+      }).append($a);
+
+      var $button = $("<button>").addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+        $li.append($button);
+        return $li;
+        $searchList.empty();
+        $searchList.append($searchingIngredient);
+    })
+  })
+}
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -91,12 +110,12 @@ var handleFormSubmit = function (event) {
   // console.log("hellooo", ingredientVar)
   
   var example = {
-    text: $ingredientText.val(),
+    search: $ingredientText.val(),
     amount: $ingredientAmmount.val()
   };
   console.log(example);
   
-  if (!(example.text && example.amount)) {
+  if (!(example.search && example.amount)) {
     alert("You must enter an example text and ammount!");
     return;
   }
@@ -106,7 +125,7 @@ var handleFormSubmit = function (event) {
   // })
   // console.log(foodWeb.search(term, maxLength));
   foodAPI.postIngredient(example).then(function() {
-    refreshExamples();
+    refreshSearches();
   });
   // API.saveIngredient(example).then(function () {
   //   refreshExamples();

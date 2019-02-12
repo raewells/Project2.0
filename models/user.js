@@ -12,15 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     googleId: {
       type: DataTypes.STRING
-<<<<<<< HEAD
-    }, 
-    created_at: {
-      field: 'created_at',
-      type: DataTypes.DATE
-  },
-  updated_at: {
-      field: 'updated_at',
-=======
     },
     createdAt: {
       field: "created_at",
@@ -28,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     updatedAt: {
       field: "updated_at",
->>>>>>> master
+
       type: DataTypes.DATE
     }
   });

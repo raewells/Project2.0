@@ -25,7 +25,7 @@
         <ul id="search-list" class="list-group">
           {{#each searches}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="getSearches/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
+            <a href="getSearches/{{this.search}}">{{this.search}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete" id="searchDelete">ｘ</button>
           </li>
           {{/each}}

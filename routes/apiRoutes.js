@@ -24,7 +24,7 @@ module.exports = function(app) {
   // });
 
 
-  app.get("/api/getSearches/:ingredient", function (req, res) {
+  app.get("/api/getSearches", function (req, res) {
     // var item = foodWeb.search(req.params.ingredient, 5);
     // console.log("params 1111111", req.params.ingredient);
     // console.log("object length", Object.keys(item).length);
@@ -39,16 +39,17 @@ module.exports = function(app) {
   app.post("/api/postSearches", function (req, res) {
     console.log('hi i am alive ========?>>>>>');
     console.log("params", req.body);
-    var item = foodWeb.search(req.body.text, 5);
+    var item = foodWeb.search(req.body.search, 5);
     console.log("search .............. ", item[0].data.title);
     // for (var i = 0; i < Object.keys(item).length; i++) {
       db.Searches.create({
-        text: item[0].data.title,
+        search: item[0].data.title,
         amount: req.body.amount
       }).then(function (dbSearches) {
         res.json(dbSearches);
       });
     // };
+    console.log()
 
   });
 

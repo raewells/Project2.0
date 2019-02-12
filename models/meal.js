@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   var Meals = sequelize.define("Meals", {
     meal_id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true
     },
     meal_name: {
@@ -20,65 +21,62 @@ module.exports = function(sequelize, DataTypes) {
     ingredient_1: {
       type: DataTypes.STRING
     },
-    ammount_1: {
+    amount_1: {
       type: DataTypes.INTEGER
     },
     ingredient_2: {
       type: DataTypes.STRING
     },
-    ammount_2: {
+    amount_2: {
       type: DataTypes.INTEGER
     },
     ingredient_3: {
       type: DataTypes.STRING
     },
-    ammount_3: {
+    amount_3: {
       type: DataTypes.INTEGER
     },
     ingredient_4: {
       type: DataTypes.STRING
     },
-    ammount_4: {
+    amount_4: {
       type: DataTypes.INTEGER
     },
     ingredient_5: {
       type: DataTypes.STRING
     },
-    ammount_5: {
+    amount_5: {
       type: DataTypes.INTEGER
     },
     ingredient_6: {
       type: DataTypes.STRING
     },
-    ammount_6: {
+    amount_6: {
       type: DataTypes.INTEGER
     },
     ingredient_7: {
       type: DataTypes.STRING
     },
-    ammount_7: {
+    amount_7: {
       type: DataTypes.INTEGER
     },
     ingredient_8: {
       type: DataTypes.STRING
     },
-    ammount_8: {
+    amount_8: {
       type: DataTypes.INTEGER
     },
     ingredient_9: {
       type: DataTypes.STRING
     },
-    ammount_9: {
+    amount_9: {
       type: DataTypes.INTEGER
     },
     ingredient_10: {
       type: DataTypes.STRING
     },
-    ammount_10: {
+    amount_10: {
       type: DataTypes.INTEGER
-    },
-    total_cals: {
-      type: DataTypes.FLOAT
     },
     total_cals: {
       type: DataTypes.FLOAT

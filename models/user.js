@@ -13,11 +13,11 @@ module.exports = (sequelize, DataTypes) => {
     googleId: {
       type: DataTypes.STRING
     }, 
-    createdAt: {
+    created_at: {
       field: 'created_at',
       type: DataTypes.DATE
   },
-  updatedAt: {
+  updated_at: {
       field: 'updated_at',
       type: DataTypes.DATE
   }

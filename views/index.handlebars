@@ -25,7 +25,7 @@
         <ul id="search-list" class="list-group">
           {{#each searches}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="ingredientSearch/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
+            <a href="getSearches/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete" id="searchDelete">ｘ</button>
           </li>
           {{/each}}
@@ -39,7 +39,7 @@
         <ul id="ingredient-list" class="list-group">
           {{#each meals}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}} || Amount: {{this.amount}} grams</a>
+            <a href="postSearches/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}

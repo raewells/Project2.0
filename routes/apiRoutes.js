@@ -25,26 +25,30 @@ module.exports = function(app) {
 
 
   app.get("/api/getSearches/:ingredient", function (req, res) {
-    var item = foodWeb.search(req.params.ingredient, 5);
-    console.log("params 1111111", req.params.ingredient);
-    for (var i = 0; i < item.length; i++) {
-      console.log("search .............. ", item[i].data.title);
-    }
+    // var item = foodWeb.search(req.params.ingredient, 5);
+    // console.log("params 1111111", req.params.ingredient);
+    // console.log("object length", Object.keys(item).length);
+    // for (var i = 0; i < Object.keys(item).length; i++) {
+    //   console.log("search .............. ", item[i].data.title);
+    // }
     db.Searches.findAll({}).then(function (dbSearches) {
       res.json(dbSearches)
     })
   })
 
-  app.post("/api/postSearches/:ingredient", function (req, res) {
+  app.post("/api/postSearches", function (req, res) {
     console.log('hi i am alive ========?>>>>>');
-    console.log("params", req.params.ingredient);
-    var searchIngredient = foodWeb.search(req.params.ingredient, 5);
-    // console.log("search .............. ", searchIngredient.data);
-    for (var i = 0; i < searchIngredient.length; i++) {
-      db.Searches.create(searchIngredient).then(function (dbSearches) {
+    console.log("params", req.body);
+    var item = foodWeb.search(req.body.text, 5);
+    console.log("search .............. ", item[0].data.title);
+    // for (var i = 0; i < Object.keys(item).length; i++) {
+      db.Searches.create({
+        text: item[0].data.title,
+        amount: req.body.amount
+      }).then(function (dbSearches) {
         res.json(dbSearches);
       });
-    };
+    // };
 
   });
 
@@ -90,9 +94,9 @@ module.exports = function(app) {
   // });
 
   //testing create user
-  app.post("/api/user", function(req, res) {
-    db.User.create(req.body).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+  // app.post("/api/user", function(req, res) {
+  //   db.User.create(req.body).then(function(dbUser) {
+  //     res.json(dbUser);
+  //   });
+  // });
 };

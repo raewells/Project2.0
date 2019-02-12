@@ -1,6 +1,6 @@
 // Get references to page elements
 var $ingredientText = $("#ingredient-text");
-var $ingredientAmmount = $("#ingredient-ammount");
+var $ingredientAmmount = $("#ingredient-amount");
 var $submitBtn = $("#submit");
 var $ingredientList = $("#ingredient-list");
 var $searchList = $("#search-list");
@@ -12,7 +12,7 @@ var $searchList = $("#search-list");
 var foodAPI = {
   searchIngredient: function (ingredient) {
     return $.ajax({
-      url: "/api/getSearches/" + ingredient,
+      url: "/api/getSearches",
       type: "GET"
     });
   },
@@ -22,7 +22,7 @@ var foodAPI = {
       headers: {
         "Content-Type": "application/json"
       },
-      url: "/api/postSearches/" + ingredient,
+      url: "/api/postSearches",
       type: "POST",
       data: JSON.stringify(ingredient)
     });
@@ -60,7 +60,7 @@ var refreshExamples = function () {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.text, example.ammount)
-        .attr("href", "/example/" + example.text);
+        .attr("href", "/meals/" + example.text);
 
       var $li = $("<li>")
         .attr({
@@ -87,15 +87,16 @@ var refreshExamples = function () {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
   event.preventDefault();
-  var ingredientVar = $("#ingredient-text").val();
-  console.log("hellooo", ingredientVar)
-  foodAPI.searchIngredient(ingredientVar);
+  // var ingredientVar = $("#ingredient-text").val();
+  // console.log("hellooo", ingredientVar)
+  
   var example = {
-    text: $ingredientText.val().trim(),
-    amount: $ingredientAmmount.val().trim()
+    text: $ingredientText.val(),
+    amount: $ingredientAmmount.val()
   };
-
-  if (!(example.text && example.ammount)) {
+  console.log(example);
+  
+  if (!(example.text && example.amount)) {
     alert("You must enter an example text and ammount!");
     return;
   }
@@ -110,7 +111,7 @@ var handleFormSubmit = function (event) {
   // API.saveIngredient(example).then(function () {
   //   refreshExamples();
   // });
-
+  foodAPI.searchIngredient(example);
   $ingredientText.val("");
   $ingredientAmmount.val("");
 };

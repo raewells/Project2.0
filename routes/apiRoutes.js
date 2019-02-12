@@ -23,29 +23,27 @@ module.exports = function(app) {
   //   });
   // });
 
-
-  app.get("/api/getSearches/:ingredient", function (req, res) {
+  app.get("/api/getSearches/:ingredient", function(req, res) {
     var item = foodWeb.search(req.params.ingredient, 5);
     console.log("params 1111111", req.params.ingredient);
     for (var i = 0; i < item.length; i++) {
       console.log("search .............. ", item[i].data.title);
     }
-    db.Searches.findAll({}).then(function (dbSearches) {
-      res.json(dbSearches)
-    })
-  })
+    db.Searches.findAll({}).then(function(dbSearches) {
+      res.json(dbSearches);
+    });
+  });
 
-  app.post("/api/postSearches/:ingredient", function (req, res) {
-    console.log('hi i am alive ========?>>>>>');
+  app.post("/api/postSearches/:ingredient", function(req, res) {
+    console.log("hi i am alive ========?>>>>>");
     console.log("params", req.params.ingredient);
     var searchIngredient = foodWeb.search(req.params.ingredient, 5);
     // console.log("search .............. ", searchIngredient.data);
     for (var i = 0; i < searchIngredient.length; i++) {
-      db.Searches.create(searchIngredient).then(function (dbSearches) {
+      db.Searches.create(searchIngredient).then(function(dbSearches) {
         res.json(dbSearches);
       });
-    };
-
+    }
   });
 
   app.delete("/api/Searches", function(req, res) {
@@ -60,21 +58,19 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/Meals/:ingredient", function (req, res) {
-    db.Meals.create(req.body).then(function (dbMeals) {
-
+  app.post("/api/Meals/:ingredient", function(req, res) {
+    db.Meals.create(req.body).then(function(dbMeals) {
       res.json(dbMeals);
     });
   });
 
-
-  app.delete("/api/Meals/:ingredient", function (req, res) {
-    db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function (dbMeals) {
+  app.delete("/api/Meals/:ingredient", function(req, res) {
+    db.Meals.destroy({ where: { id: req.params.ingredient } }).then(function(
+      dbMeals
+    ) {
       res.json(dbMeals);
     });
-
   });
-
 
   // app.get("/api/Meals/", function(req, res) {
   //   db.Meals
@@ -90,9 +86,9 @@ module.exports = function(app) {
   // });
 
   //testing create user
-  app.post("/api/user", function(req, res) {
-    db.User.create(req.body).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+  // app.post("/api/user", function(req, res) {
+  //   db.User.create(req.body).then(function(dbUser) {
+  //     res.json(dbUser);
+  //   });
+  // });
 };

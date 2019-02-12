@@ -12,7 +12,7 @@ var $searchList = $("#search-list");
 var foodAPI = {
   searchIngredient: function (ingredient) {
     return $.ajax({
-      url: "/api/getSearches",
+      url: "/api/searchIngredient",
       type: "GET"
     });
   },
@@ -36,21 +36,27 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/Meals",
+      url: "/api/Meals",
       data: JSON.stringify(example)
     });
   },
   getIngredients: function () {
     return $.ajax({
-      url: "api/Meals",
+      url: "/api/Meals",
       type: "GET"
     });
   },
   deleteIngredient: function (ingredient) {
     return $.ajax({
-      url: "api/Meals/" + id,
+      url: "/api/Meals/" + id,
       type: "DELETE"
     });
+  },
+  sumIngredients: function (ingredient) {
+    return $.ajax({
+      url: "/api/MealsSum",
+      type: "POST"
+    })
   }
 };
 
@@ -59,7 +65,7 @@ var refreshExamples = function () {
   API.getIngredients().then(function (data) {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
-        .text(example.text, example.ammount)
+        .text(example.text)
         .attr("href", "/meals/" + example.text);
 
       var $li = $("<li>")
@@ -85,10 +91,12 @@ var refreshExamples = function () {
 var refreshSearches = function () {
   foodAPI.searchIngredient().then(function(data) {
     var $searchingIngredient = data.map(function (searches) {
-      var $a = $("<a>").text(searches.search).attr("href", "/getSearches/", searches.search);
+      var $a = $("<a>")
+      .text(searches.search)
+      .attr("href", "/searchIngredient/", searches.id);
 
       var $li = $("<li>").attr({
-        class: "list-group-item",
+        class: "list-group-item-search",
         "data-id": searches.id
       }).append($a);
 
@@ -155,6 +163,8 @@ var handleDeleteBtnClick = function () {
     refreshExamples();
   });
 };
+
+
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);

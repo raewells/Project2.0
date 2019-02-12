@@ -2,53 +2,27 @@ var db = require("../models");
 var foodWeb = require("foodweb");
 
 module.exports = function(app) {
-  // Get all examples
-  // app.get("/api/examples", function (req, res) {
-  //   db.Example.findAll({}).then(function (dbExamples) {
-  //     res.json(dbExamples);
-  //   });
-  // });
-
-  // // Create a new example
-  // app.post("/api/examples", function (req, res) {
-  //   db.Example.create(req.body).then(function (dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function (req, res) {
-  //   db.Example.destroy({ where: { id: req.params.id } }).then(function (dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
-
+  
 
   app.get("/api/getSearches", function (req, res) {
-    // var item = foodWeb.search(req.params.ingredient, 5);
-    // console.log("params 1111111", req.params.ingredient);
-    // console.log("object length", Object.keys(item).length);
-    // for (var i = 0; i < Object.keys(item).length; i++) {
-    //   console.log("search .............. ", item[i].data.title);
-    // }
     db.Searches.findAll({}).then(function (dbSearches) {
       res.json(dbSearches)
-    })
-  })
+    });
+  });
 
   app.post("/api/postSearches", function (req, res) {
     console.log('hi i am alive ========?>>>>>');
     console.log("params", req.body);
     var item = foodWeb.search(req.body.search, 5);
     console.log("search .............. ", item[0].data.title);
-    // for (var i = 0; i < Object.keys(item).length; i++) {
+    for (var i = 0; i < Object.keys(item).length; i++) {
       db.Searches.create({
-        search: item[0].data.title,
+        search: item[i].data.title,
         amount: req.body.amount
       }).then(function (dbSearches) {
         res.json(dbSearches);
       });
-    // };
+    };
     console.log()
 
   });
@@ -79,6 +53,12 @@ module.exports = function(app) {
     });
   });
 
+  // app.get("/api/MealSum", function (req, res) {
+  //   db.Meals.findAll({}).then(function(dbMeals) {
+  //     var totalCals;
+  //     for (var i = 0; i < )
+  //   })
+  // })
   // app.get("/api/Meals/", function(req, res) {
   //   db.Meals
   // })

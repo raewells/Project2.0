@@ -4,10 +4,6 @@ var $ingredientAmmount = $("#ingredient-amount");
 var $submitBtn = $("#submit");
 var $ingredientList = $("#ingredient-list");
 var $searchList = $("#search-list");
-// food web api
-// var foodWeb = require("foodweb");
-// var term = $ingredientText; // the search term
-// var maxLength = 5; // the maximum number of items to return
 
 var foodAPI = {
   searchIngredient: function (ingredient) {
@@ -93,12 +89,10 @@ var refreshSearches = function () {
     var $searchingIngredient = data.map(function (searches) {
       var $a = $("<a>")
       .text(searches.search)
+      console.log("refresh searches.search", searches.search)
       .attr("href", "/searchIngredient/", searches.id);
 
-      var $li = $("<li>").attr({
-        class: "list-group-item-search",
-        "data-id": searches.id
-      }).append($a);
+      var $li = $("<li>").attr({class: "list-group-item-search", "data-id": searches.id}).append($a);
 
       var $button = $("<button>").addClass("btn btn-danger float-right delete")
         .text("ｘ");
@@ -114,9 +108,7 @@ var refreshSearches = function () {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
   event.preventDefault();
-  // var ingredientVar = $("#ingredient-text").val();
-  // console.log("hellooo", ingredientVar)
-  
+    
   var example = {
     search: $ingredientText.val(),
     amount: $ingredientAmmount.val()
@@ -128,16 +120,11 @@ var handleFormSubmit = function (event) {
     return;
   }
 
-  // API.getIngredients(example).then(function() {
-
-  // })
-  // console.log(foodWeb.search(term, maxLength));
+  
   foodAPI.postIngredient(example).then(function() {
     refreshSearches();
   });
-  // API.saveIngredient(example).then(function () {
-  //   refreshExamples();
-  // });
+  
   foodAPI.searchIngredient(example);
   $ingredientText.val("");
   $ingredientAmmount.val("");

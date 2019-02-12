@@ -1,4 +1,4 @@
-// module.exports = function(sequelize, DataTypes) {
+git// module.exports = function(sequelize, DataTypes) {
 //   var Example = sequelize.define("Example", {
 //     text: DataTypes.STRING,
 //     description: DataTypes.TEXT
@@ -109,5 +109,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+
+  Meals.associate = function(models) {
+    Meals.belongsTo(models.Users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Meals;
 };

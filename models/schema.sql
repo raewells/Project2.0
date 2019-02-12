@@ -15,7 +15,12 @@ USE exampledb;
 
 -- CREATE TABLE meals
 -- (
+
 --     meal_id INT AUTO_INCREMENT NOT NULL,
+
+--     meal_id INT
+--     AUTO_INCREMENT NOT NULL,
+
 -- meal_name VARCHAR
 --     (100) NOT NULL,
 -- ingredient_1 VARCHAR
@@ -68,8 +73,13 @@ USE exampledb;
 --     (8,0),
 --     total_sugar FLOAT
 --     (8,0),
+
 --     createdAt DATE,
 --     updatedAt DATE,
+
+--     created_at DATE,
+--     updated_at DATE,
+
 -- created_by_user VARCHAR
 --     (20),
 -- PRIMARY KEY
@@ -87,8 +97,35 @@ USE exampledb;
 --         (80),
 --     amount INTEGER
 --         (11),
+
 --     createdAt DATE,
 --     updatedAt DATE,
 --     PRIMARY KEY
 --         (id)
 -- );
+
+--     created_at DATE,
+--     updated_at DATE,
+--     PRIMARY KEY
+--         (id)
+-- );
+
+        -- INSERT INTO users
+        --     (first_name, last_name, username, email)
+        -- VALUES
+        --     ("Kenton", "Kirlin", 'Kenton_Kirlin', 'yaboyKK@gmail.com'),
+        --     ("Cardi", "B", 'trashcitygirl', 'bloodyshoes@gmail.com');
+
+        -- INSERT INTO meals
+        --     (meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals, created_by_user)
+        -- VALUES
+        --     ("Grilled Cheese", "Bread", "Cheese", "Hot Sauce", 1000, 'Kenton_Kirlin'),
+        --     ("Diet", "Celery", "Water", "Lettuce", 23.54, 'trashcitygirl'),
+        --     ("Dessert", "Chocolate", "Ice Cream", "Strawberries", 800.54, 'trashcitygirl');
+
+        -- SELECT username, meal_name, ingredient_1, ingredient_2, ingredient_3, total_cals
+        -- FROM users, meals
+        -- WHERE meals.created_by_user = users.username
+        -- GROUP BY username
+        -- ORDER BY meal_id;
+

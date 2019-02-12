@@ -23,27 +23,34 @@ module.exports = function(app) {
   //   });
   // });
 
-  app.get("/api/getSearches/:ingredient", function(req, res) {
-    var item = foodWeb.search(req.params.ingredient, 5);
-    console.log("params 1111111", req.params.ingredient);
-    for (var i = 0; i < item.length; i++) {
-      console.log("search .............. ", item[i].data.title);
-    }
-    db.Searches.findAll({}).then(function(dbSearches) {
-      res.json(dbSearches);
-    });
-  });
 
-  app.post("/api/postSearches/:ingredient", function(req, res) {
-    console.log("hi i am alive ========?>>>>>");
-    console.log("params", req.params.ingredient);
-    var searchIngredient = foodWeb.search(req.params.ingredient, 5);
-    // console.log("search .............. ", searchIngredient.data);
-    for (var i = 0; i < searchIngredient.length; i++) {
-      db.Searches.create(searchIngredient).then(function(dbSearches) {
+  app.get("/api/getSearches", function (req, res) {
+    // var item = foodWeb.search(req.params.ingredient, 5);
+    // console.log("params 1111111", req.params.ingredient);
+    // console.log("object length", Object.keys(item).length);
+    // for (var i = 0; i < Object.keys(item).length; i++) {
+    //   console.log("search .............. ", item[i].data.title);
+    // }
+    db.Searches.findAll({}).then(function (dbSearches) {
+      res.json(dbSearches)
+    })
+  })
+
+  app.post("/api/postSearches", function (req, res) {
+    console.log('hi i am alive ========?>>>>>');
+    console.log("params", req.body);
+    var item = foodWeb.search(req.body.search, 5);
+    console.log("search .............. ", item[0].data.title);
+    // for (var i = 0; i < Object.keys(item).length; i++) {
+      db.Searches.create({
+        search: item[0].data.title,
+        amount: req.body.amount
+      }).then(function (dbSearches) {
         res.json(dbSearches);
       });
-    }
+    // };
+    console.log()
+
   });
 
   app.delete("/api/Searches", function(req, res) {

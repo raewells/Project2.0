@@ -15,8 +15,12 @@ USE exampledb;
 
 -- CREATE TABLE meals
 -- (
+
+--     meal_id INT AUTO_INCREMENT NOT NULL,
+
 --     meal_id INT
 --     AUTO_INCREMENT NOT NULL,
+
 -- meal_name VARCHAR
 --     (100) NOT NULL,
 -- ingredient_1 VARCHAR
@@ -69,8 +73,13 @@ USE exampledb;
 --     (8,0),
 --     total_sugar FLOAT
 --     (8,0),
+
+--     createdAt DATE,
+--     updatedAt DATE,
+
 --     created_at DATE,
 --     updated_at DATE,
+
 -- created_by_user VARCHAR
 --     (20),
 -- PRIMARY KEY
@@ -88,6 +97,13 @@ USE exampledb;
 --         (80),
 --     amount INTEGER
 --         (11),
+
+--     createdAt DATE,
+--     updatedAt DATE,
+--     PRIMARY KEY
+--         (id)
+-- );
+
 --     created_at DATE,
 --     updated_at DATE,
 --     PRIMARY KEY
@@ -112,3 +128,4 @@ USE exampledb;
         -- WHERE meals.created_by_user = users.username
         -- GROUP BY username
         -- ORDER BY meal_id;
+

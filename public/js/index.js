@@ -1,6 +1,6 @@
 // Get references to page elements
 var $ingredientText = $("#ingredient-text");
-var $ingredientAmmount = $("#ingredient-ammount");
+var $ingredientAmmount = $("#ingredient-amount");
 var $submitBtn = $("#submit");
 var $ingredientList = $("#ingredient-list");
 var $searchList = $("#search-list");
@@ -12,17 +12,17 @@ var $searchList = $("#search-list");
 var foodAPI = {
   searchIngredient: function (ingredient) {
     return $.ajax({
-      url: "/api/getSearches/" + ingredient,
+      url: "/api/getSearches",
       type: "GET"
     });
   },
   postIngredient: function (ingredient) {
-    console.log("post ingredient", ingredient.text)
+    console.log("post ingredient", ingredient.search)
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
-      url: "/api/postSearches/" + ingredient,
+      url: "/api/postSearches",
       type: "POST",
       data: JSON.stringify(ingredient)
     });
@@ -60,7 +60,7 @@ var refreshExamples = function () {
     var $examples = data.map(function (example) {
       var $a = $("<a>")
         .text(example.text, example.ammount)
-        .attr("href", "/example/" + example.text);
+        .attr("href", "/meals/" + example.text);
 
       var $li = $("<li>")
         .attr({
@@ -82,20 +82,40 @@ var refreshExamples = function () {
     $ingredientList.append($examples);
   });
 };
+var refreshSearches = function () {
+  foodAPI.searchIngredient().then(function(data) {
+    var $searchingIngredient = data.map(function (searches) {
+      var $a = $("<a>").text(searches.search).attr("href", "/getSearches/", searches.search);
+
+      var $li = $("<li>").attr({
+        class: "list-group-item",
+        "data-id": searches.id
+      }).append($a);
+
+      var $button = $("<button>").addClass("btn btn-danger float-right delete")
+        .text("ｘ");
+        $li.append($button);
+        return $li;
+        $searchList.empty();
+        $searchList.append($searchingIngredient);
+    })
+  })
+}
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function (event) {
   event.preventDefault();
-  var ingredientVar = $("#ingredient-text").val();
-  console.log("hellooo", ingredientVar)
-  foodAPI.searchIngredient(ingredientVar);
+  // var ingredientVar = $("#ingredient-text").val();
+  // console.log("hellooo", ingredientVar)
+  
   var example = {
-    text: $ingredientText.val().trim(),
-    amount: $ingredientAmmount.val().trim()
+    search: $ingredientText.val(),
+    amount: $ingredientAmmount.val()
   };
-
-  if (!(example.text && example.ammount)) {
+  console.log(example);
+  
+  if (!(example.search && example.amount)) {
     alert("You must enter an example text and ammount!");
     return;
   }
@@ -105,12 +125,12 @@ var handleFormSubmit = function (event) {
   // })
   // console.log(foodWeb.search(term, maxLength));
   foodAPI.postIngredient(example).then(function() {
-    refreshExamples();
+    refreshSearches();
   });
   // API.saveIngredient(example).then(function () {
   //   refreshExamples();
   // });
-
+  foodAPI.searchIngredient(example);
   $ingredientText.val("");
   $ingredientAmmount.val("");
 };

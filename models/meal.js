@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   var Meals = sequelize.define("Meals", {
     meal_id: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true
     },
     meal_name: {
@@ -76,9 +77,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     amount_10: {
       type: DataTypes.INTEGER
-    },
-    total_cals: {
-      type: DataTypes.FLOAT
     },
     total_cals: {
       type: DataTypes.FLOAT

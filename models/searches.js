@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     var Searches = sequelize.define('Searches', {
         id: {
             type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },        
         search: {
@@ -10,11 +11,11 @@ module.exports = (sequelize, DataTypes) => {
         amount: {
             type: DataTypes.INTEGER
         },
-        createdAt: {
+        created_at: {
             field: 'created_at',
             type: DataTypes.DATE
         },
-        updatedAt: {
+        updated_at: {
             field: 'updated_at',
             type: DataTypes.DATE
         }

@@ -1,6 +1,6 @@
 var db = require("../models");
-var foodWeb = require("foodweb");
-var path = require("path");
+// var foodWeb = require("foodweb");
+// var path = require("path");
 
 module.exports = function(app) {
   // Load index page
@@ -14,9 +14,16 @@ module.exports = function(app) {
   console.log("2, html routes");
 
   //Just for testing login
-  app.get("/login", function(req, res) {
+  app.get("/auth/google/callback", function(req, res) {
     res.render("login.ejs");
   });
+  //futher google login, rachel will look over this
+
+  // app.get("/auth/google", function(req, res) {
+  //   res.render("");
+  // })
+
+  //^^^futher google login, rachel will look over this^^^
 
   //load all meals
   // app.get("/meals", function(req, results) {
@@ -46,20 +53,20 @@ module.exports = function(app) {
   // });
 
   // Load example page and pass in an example by id
-  app.get("/ingredientSearch/:ingredient", function(req, res) {
-    console.log("ingredient", req.params.ingredient);
-    var searchIngredient = foodWeb.search(req.params.ingredient, 5);
-    console.log(searchIngredient);
+  // app.get("/ingredientSearch/:ingredient", function(req, res) {
+  //   console.log("ingredient", req.params.ingredient);
+  //   var searchIngredient = foodWeb.search(req.params.ingredient, 5);
+  //   console.log(searchIngredient);
 
-    db.Example.findOne({ where: { text: req.params.ingredient } }).then(
-      function(dbExample) {
-        console.log("db test", dbExample);
-        res.render("searches", {
-          searches: dbExample
-        });
-      }
-    );
-  });
+  //   db.Example.findOne({ where: { text: req.params.ingredient } }).then(
+  //     function(dbExample) {
+  //       console.log("db test", dbExample);
+  //       res.render("searches", {
+  //         searches: dbExample
+  //       });
+  //     }
+  //   );
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

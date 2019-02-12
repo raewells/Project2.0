@@ -12,18 +12,19 @@ var $searchList = $("#search-list");
 var foodAPI = {
   searchIngredient: function (ingredient) {
     return $.ajax({
-      url: "/api/Searches/" + ingredient,
+      url: "/api/getSearches/" + ingredient,
       type: "GET"
     });
   },
-  postIngredient: function (example) {
+  postIngredient: function (ingredient) {
+    console.log("post ingredient", ingredient.text)
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
-      url: "/api/Searches/",
+      url: "/api/postSearches/" + ingredient,
       type: "POST",
-      data: JSON.stringify(example)
+      data: JSON.stringify(ingredient)
     });
   }
 };
@@ -87,10 +88,11 @@ var refreshExamples = function () {
 var handleFormSubmit = function (event) {
   event.preventDefault();
   var ingredientVar = $("#ingredient-text").val();
+  console.log("hellooo", ingredientVar)
   foodAPI.searchIngredient(ingredientVar);
   var example = {
     text: $ingredientText.val().trim(),
-    ammount: $ingredientAmmount.val().trim()
+    amount: $ingredientAmmount.val().trim()
   };
 
   if (!(example.text && example.ammount)) {

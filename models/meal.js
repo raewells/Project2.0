@@ -80,6 +80,29 @@ module.exports = function(sequelize, DataTypes) {
     total_cals: {
       type: DataTypes.FLOAT
     },
+    total_cals: {
+      type: DataTypes.FLOAT
+    },
+    total_fat: {
+      type: DataTypes.FLOAT
+    },
+    total_carbs: {
+      type: DataTypes.FLOAT
+    },
+    total_protein: {
+      type: DataTypes.FLOAT
+    },
+    total_sugar: {
+      type: DataTypes.FLOAT
+    },
+    createdAt: {
+      field: 'created_at',
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      field: 'updated_at',
+      type: DataTypes.DATE
+    },
     created_by_user: {
       type: DataTypes.STRING,
       references: {

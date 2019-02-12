@@ -29,17 +29,29 @@ router.get("/login", (req, res) => {
 });
 
 // auth logout
-router.get("/logout", (req, res) => {
-  // handle with passport
-  res.send("logging out");
+router.get("/logout", function(req, res) {
+  //handle with passport
+  console.log("logging out");
+  req.logout();
+  req.session = null;
+  res.render("index", { user: req.user });
 });
 
-// auth with google+
-router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: ["profile"]
-  })
+//auth with google
+router.get('/auth/google', passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/userinfo.profile']
+}));
+
+//callback route for google to redirect to
+router.get('/auth/google/callback',
+passport.authenticate('google', {
+    failureRedirect: '/'
+}),
+(req, res) => {
+    console.log(req.user.token);
+    req.session.token = req.user.token;
+    res.redirect('/');
+}
 );
 
 // callback route for google to redirect to

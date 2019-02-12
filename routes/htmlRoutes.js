@@ -19,6 +19,10 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     res.render("login.ejs");
   });
+
+  // app.get("/profile/", function(req, res) {
+  //   res.render("profile.ejs");
+  // });
   //futher google login, rachel will look over this
 
   // app.get("/auth/google", function(req, res) {

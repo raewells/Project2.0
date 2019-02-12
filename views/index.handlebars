@@ -24,8 +24,8 @@
         <h4>Searches:</h4>
         <ul id="search-list" class="list-group">
           {{#each searches}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="getSearches/{{this.search}}">{{this.search}} || Amount: {{this.amount}} grams</a>
+          <li data-id="{{this.id}}" class="list-group-item-search">
+            <a href="/searchIngredient/{{this.search}}">{{this.search}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete" id="searchDelete">ｘ</button>
           </li>
           {{/each}}
@@ -34,17 +34,31 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-6 offset-3">
+      <div class="col-6">
         <h4>Ingredients:</h4>
         <ul id="ingredient-list" class="list-group">
           {{#each meals}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="postSearches/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
+            <a href="/getIngrdients/{{this.text}}">{{this.text}} || Amount: {{this.amount}} grams</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
         </ul>
       </div>
+      <div class="col-6">
+        <h4>Nutritional Info: </h4>
+        <ul id="nutritional-list" class="list-group-item">
+          <a href="postNutrition/{{this.meal_id}}">
+            <ul> {{this.meal_name}} </ul>
+            <ul> {{this.total_cals}} </ul>
+            <ul> {{this.total_fat}} </ul>
+            <ul> {{this.total_carbs}} </ul>
+            <ul> {{this.total_protein}} </ul>
+            <ul> {{this.total_sugar}} </ul>
+            <ul> {{this.created_by_user}} </ul>
+          </a>
+      </div>
+
     </div>
   </div>
   <a href="/login">Sign In with Google</a>
